@@ -3,7 +3,7 @@ moveProxiesToSync() {
   begin=0
   while read -r line; do
     if [[ $begin == 1 ]]; then
-      if [[ $line =~ "  - {" ]]; then
+      if [[ $line =~ "- {" ]]; then
         proxies+=("$line")
       else
         break;
