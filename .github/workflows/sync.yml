@@ -46,7 +46,7 @@ jobs:
           git checkout TopFreeProxies/master "Eternity.yaml"
           
           echo > "proxies:"
-          moveProxiesToSync $aweikejiFile clash_auto
+          moveProxiesToSync "$aweikejiFile" clash_auto
           moveProxiesToSync "Eternity.yaml" clash_auto
           
           git rm $aweikejiFile
