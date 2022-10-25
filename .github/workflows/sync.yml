@@ -13,24 +13,14 @@ jobs:
     - name: Merge files
       id: gitStatus
       run: |
-          source ./moveProxiesToSync.sh
-          git remote add aweikeji "https://github.com/ggborr/aweikeji"
-          git fetch aweikeji --depth=2
-
-          git remote add TopFreeProxies "https://github.com/alanbobs999/TopFreeProxies"
-          git fetch TopFreeProxies --depth=2
-          
-          aweikejiFile=$( git diff --name-only --diff-filter=AMT aweikeji/main~1 aweikeji/main  | xargs -I{} -- git log -1  --remotes="aweikeji"  --format="%ci {}" -- {} | sort | tail -1 | cut -d " " -f4)
-          
-          git checkout aweikeji/main "$aweikejiFile"
-          git checkout TopFreeProxies/master "Eternity.yaml"
+          source ./.github/moveProxiesToSync.sh
+          getRemoteFile "https://github.com/ggborr/aweikeji" main
+          getRemoteFile "https://github.com/alanbobs999/TopFreeProxies" master "Eternity.yaml"
           
           echo "proxies:" > clash_auto 
-          moveProxiesToSync "$aweikejiFile" clash_auto
-          moveProxiesToSync "Eternity.yaml" clash_auto
+          ls merge* | xargs -I{} -- moveProxiesToSync {} clash_auto
           
-          git rm -rf "$aweikejiFile"
-          git rm -rf "Eternity.yaml" 
+          rm -rf merge*
           
           git add clash_auto
           gitStatus="$(git status -s)"
