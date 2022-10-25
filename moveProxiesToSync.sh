@@ -2,7 +2,6 @@ moveProxiesToSync() {
   proxies=()
   begin=0
   while read -r line; do
-    echo $line
     if [[ $begin == 1 ]]; then
       if [[ $line =~ "^[ ]*-.*$" ]]; then
         proxies+=("$line")
@@ -11,6 +10,7 @@ moveProxiesToSync() {
       fi
     fi
     if [[ $line =~ "^proxies:" ]]; then
+      echo $line
       begin=1
     fi
   done < "$1"
