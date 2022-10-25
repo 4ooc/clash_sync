@@ -19,9 +19,7 @@ moveProxiesToSync() {
   begin=0
   while read -r line; do
     if [[ $begin == 1 ]]; then
-      echo "开始查找"
       if [[ $line =~ "- {" ]]; then
-        echo "找到"
         proxies+=("$line")
       else
         break;
