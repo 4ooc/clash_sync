@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.5.0
-    - name: Create Command
+    - name: Merge files
+      id: gitStatus
       run: |
           moveProxiesToSync() {
               proxies=()
@@ -32,9 +33,6 @@ jobs:
                 echo $proxy >> $2
               done
             }
-    - name: Merge files
-      id: gitStatus
-      run: |
           git remote add aweikeji "https://github.com/ggborr/aweikeji"
           git fetch aweikeji --depth=2
            which moveProxiesToSync
