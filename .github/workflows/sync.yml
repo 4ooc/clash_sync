@@ -37,15 +37,18 @@ jobs:
       run: |
           git remote add aweikeji "https://github.com/ggborr/aweikeji"
           git fetch aweikeji --depth=2
-          
+           which moveProxiesToSync
           git remote add TopFreeProxies "https://github.com/alanbobs999/TopFreeProxies"
           git fetch TopFreeProxies --depth=2
           
+          echo 1111
           aweikejiFile=$( git diff --name-only --diff-filter=AMT aweikeji/main~1 aweikeji/main  | xargs -I{} -- git log -1 --format="%ci {}" {} | sort | tail -1 | cut -d " " -f4)
           git checkout aweikeji/main "$aweikejiFile"
           git checkout TopFreeProxies/master "Eternity.yaml"
           
-          echo > "proxies:"
+          ls
+         
+          echo "proxies:" > clash_auto 
           moveProxiesToSync "$aweikejiFile" clash_auto
           moveProxiesToSync "Eternity.yaml" clash_auto
           
