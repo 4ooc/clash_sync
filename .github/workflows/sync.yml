@@ -13,7 +13,7 @@ jobs:
     - name: Merge files
       id: gitStatus
       run: |
-          source ./.github/moveProxiesToSync.sh
+          source ./.github/func.sh
           getRemoteFile "https://github.com/ggborr/aweikeji" main
           getRemoteFile "https://github.com/alanbobs999/TopFreeProxies" master "Eternity.yaml"
           
