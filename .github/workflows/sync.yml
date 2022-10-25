@@ -21,7 +21,7 @@ jobs:
           git fetch TopFreeProxies --depth=2
           
           echo 1111
-          aweikejiFile=$( git diff --name-only --diff-filter=AMT aweikeji/main~1 aweikeji/main  | xargs -I{} -- git log -1 --format="%ci {}" {} | sort | tail -1 | cut -d " " -f4)
+          aweikejiFile=$( git diff --name-only --diff-filter=AMT aweikeji/main~1 aweikeji/main  | xargs -I{} -- git log -1 --format="%ci {}" -- {} | sort | tail -1 | cut -d " " -f4)
           echo "$aweikejiFile"
           git checkout aweikeji/main "$aweikejiFile"
           git checkout TopFreeProxies/master "Eternity.yaml"
