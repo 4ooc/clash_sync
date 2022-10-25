@@ -1,8 +1,8 @@
 moveProxiesToSync() {
   proxies=()
   begin=0
-  echo $1
-  echo $2
+  cat $1
+  cat $2
   while read -r line; do
     echo $line
     if [[ $begin == 1 ]]; then
@@ -16,9 +16,9 @@ moveProxiesToSync() {
       echo 123123123123123
       begin=1
     fi
-  done < $1
+  done < "$1"
 
   for proxy in "${proxies[@]}"; do
-    echo $proxy >> $2
+    echo $proxy >> "$2"
   done
 }
