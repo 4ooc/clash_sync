@@ -13,11 +13,10 @@ jobs:
     - name: Merge files
       id: gitStatus
       run: |
-          ls
           source ./moveProxiesToSync.sh
           git remote add aweikeji "https://github.com/ggborr/aweikeji"
           git fetch aweikeji --depth=2
-           which moveProxiesToSync
+
           git remote add TopFreeProxies "https://github.com/alanbobs999/TopFreeProxies"
           git fetch TopFreeProxies --depth=2
           
