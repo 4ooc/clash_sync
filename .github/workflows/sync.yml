@@ -27,7 +27,10 @@ jobs:
           
           echo "proxies:" > clash_auto 
           moveProxiesToSync "$aweikejiFile" clash_auto
+          cat "$aweikejiFile"
           moveProxiesToSync "Eternity.yaml" clash_auto
+          echo "------------------------"
+          cat clash_auto
           
           git rm -rf "$aweikejiFile"
           git rm -rf "Eternity.yaml" 
