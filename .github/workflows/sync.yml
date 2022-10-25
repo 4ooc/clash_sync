@@ -13,26 +13,8 @@ jobs:
     - name: Merge files
       id: gitStatus
       run: |
-          moveProxiesToSync() {
-              proxies=()
-              begin=0
-              while read -r line; do
-                if [[ $begin == 1 ]]; then
-                  if [[ $line =~ "^[ ]*-.*$" ]]; then
-                    proxies+=("$line")
-                  else
-                    break;
-                  fi
-                fi
-                if [[ $line == "proxies:" ]]; then
-                  begin=1
-                fi
-              done < $1
-
-              for proxy in "${proxies[@]}"; do
-                echo $proxy >> $2
-              done
-            }
+          ls
+          source ./moveProxiesToSync.sh
           git remote add aweikeji "https://github.com/ggborr/aweikeji"
           git fetch aweikeji --depth=2
            which moveProxiesToSync
