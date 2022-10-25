@@ -20,7 +20,7 @@ jobs:
           git remote add TopFreeProxies "https://github.com/alanbobs999/TopFreeProxies"
           git fetch TopFreeProxies --depth=2
           
-          aweikejiFile=$( git diff --name-only --diff-filter=AMT aweikeji/main~1 aweikeji/main  | xargs -I{} -- git log -1 --format="%ci {}" -- {} | sort | tail -1 | cut -d " " -f4)
+          aweikejiFile=$( git diff --name-only --diff-filter=AMT aweikeji/main~1 aweikeji/main  | xargs -I{} -- git log -1  --remotes="aweikeji"  --format="%ci {}" -- {} | sort | tail -1 | cut -d " " -f4)
           echo "$aweikejiFile"
           echo 11111111
           git checkout aweikeji/main "$aweikejiFile"
