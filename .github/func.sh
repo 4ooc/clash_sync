@@ -11,6 +11,7 @@ getRemoteFile(){
   
    git checkout $repositoryName/$branchName "$fileName"
    mv $fileName merge_$fileName
+   git rm -rf "$fileName"
 }
 
 moveProxiesToSync() {
