@@ -18,7 +18,7 @@ jobs:
           getRemoteFile "https://github.com/alanbobs999/TopFreeProxies" master "Eternity.yaml"
           
           echo "proxies:" > clash_auto 
-          mergeFiles=$(ls merge*)
+          mergeFiles=(`ls merge*`)
           for mergeFile in "${mergeFiles[@]}"; do
             echo $mergeFile
             moveProxiesToSync $mergeFile clash_auto
