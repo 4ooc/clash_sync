@@ -36,6 +36,7 @@ jobs:
           gitStatus="$(git status -s)"
           echo "hadChanged=${#gitStatus}" >> $GITHUB_OUTPUT
           echo $gitStatus
+          echo ${#gitStatus}
     - name: Commit files
       if: ${{ steps.gitStatus.outputs.hadChanged }}
       run: |
