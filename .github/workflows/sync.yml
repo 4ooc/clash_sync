@@ -21,16 +21,13 @@ jobs:
           git fetch TopFreeProxies --depth=2
           
           aweikejiFile=$( git diff --name-only --diff-filter=AMT aweikeji/main~1 aweikeji/main  | xargs -I{} -- git log -1  --remotes="aweikeji"  --format="%ci {}" -- {} | sort | tail -1 | cut -d " " -f4)
-          echo "$aweikejiFile"
+          
           git checkout aweikeji/main "$aweikejiFile"
           git checkout TopFreeProxies/master "Eternity.yaml"
           
           echo "proxies:" > clash_auto 
           moveProxiesToSync "$aweikejiFile" clash_auto
-          cat "$aweikejiFile"
           moveProxiesToSync "Eternity.yaml" clash_auto
-          echo "------------------------"
-          cat clash_auto
           
           git rm -rf "$aweikejiFile"
           git rm -rf "Eternity.yaml" 
