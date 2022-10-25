@@ -35,10 +35,8 @@ jobs:
           git add clash_auto
           gitStatus="$(git status -s)"
           echo "hadChanged=${#gitStatus}" >> $GITHUB_OUTPUT
-          echo $gitStatus
-          echo ${#gitStatus}
     - name: Commit files
-      if: ${{ steps.gitStatus.outputs.hadChanged }}
+      if: ${{ steps.gitStatus.outputs.hadChanged != 0 }}
       run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
