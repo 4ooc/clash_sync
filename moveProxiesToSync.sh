@@ -1,6 +1,8 @@
 moveProxiesToSync() {
   proxies=()
   begin=0
+  echo $1
+  echo $2
   while read -r line; do
     echo $line
     if [[ $begin == 1 ]]; then
