@@ -20,6 +20,7 @@ jobs:
           echo "proxies:" > clash_auto 
           mergeFiles=$(ls merge*)
           for mergeFile in "${mergeFiles[@]}"; do
+            echo $mergeFile
             moveProxiesToSync $mergeFile clash_auto
           done
           
