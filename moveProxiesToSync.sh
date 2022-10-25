@@ -9,7 +9,7 @@ moveProxiesToSync() {
         break;
       fi
     fi
-    if [[ $line =~ "^proxies:" ]]; then
+    if [[ $line =~ "^[ ]*proxies:" ]]; then
       echo $line
       begin=1
     fi
