@@ -39,10 +39,10 @@ jobs:
       id: gitStatus
       run: |
           git remote add aweikeji "https://github.com/ggborr/aweikeji"
-          git fetch aweikeji --depth=2
+          git fetch aweikeji aweikeji --depth=2
           
           git remote add TopFreeProxies "https://github.com/alanbobs999/TopFreeProxies"
-          git fetch TopFreeProxies --depth=2
+          git fetch TopFreeProxies TopFreeProxies --depth=2
           
           aweikejiFile=$( git diff --name-only --diff-filter=AMT awikeji~1 aweikeji | xargs -I{} -- git log -1 --format="%ci {}" {} | sort | tail -1 | cut -d " " -f4)
           git checkout aweikeji $aweikejiFile
