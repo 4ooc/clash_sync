@@ -2,7 +2,7 @@ getRemoteFile(){
    repositoryUrl=$1
    branchName=$2
    fileName=$3
-   type=${4:-clash}
+   type=${4:-ready}
    repositoryName=${repositoryUrl##*/}
    git remote add "$repositoryName" "$repositoryUrl"
    git fetch $repositoryName --depth=3
