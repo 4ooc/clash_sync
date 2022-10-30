@@ -28,13 +28,13 @@ jobs:
           done
           
           echo "proxies:" > clash_auto 
-          clashFiles=(`ls clash*`)
-          for clashFile in "${clashFiles[@]}"; do
-            echo $clashFile
-            moveProxiesToSync $clashFile clash_auto
+          readyFiles=(`ls ready*`)
+          for readyFile in "${readyFiles[@]}"; do
+            echo $readyFile
+            moveProxiesToSync $readyFile clash_auto
           done
           
-          rm -rf clash*
+          rm -rf ready*
     - name: Add files
       id: gitStatus   
       run: |
