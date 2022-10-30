@@ -2,6 +2,7 @@ getRemoteFile(){
    repositoryUrl=$1
    branchName=$2
    fileName=$3
+   type=${4:-clash}
    repositoryName=${repositoryUrl##*/}
    git remote add "$repositoryName" "$repositoryUrl"
    git fetch $repositoryName --depth=3
@@ -15,7 +16,7 @@ getRemoteFile(){
    fi
    echo "file--" $fileName
    git checkout $repositoryName/$branchName "$fileName"
-   mv $fileName merge_$fileName
+   mv $fileName ${type}_$fileName
    git rm -rf "$fileName"
 }
 
