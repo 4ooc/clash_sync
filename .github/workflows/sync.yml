@@ -23,7 +23,7 @@ jobs:
           urlFiles=(`ls url*`)
           for urlFile in "${urlFiles[@]}"; do
             echo $urlFile
-            curl -o clash_$urlFile "https://api.v1.mk/sub?target=clash&url=$(urlEncode a)&insert=false&config=https%3A%2F%2Fraw.githubusercontent.com%2FMeilieage%2Fwebcdn%2Fmain%2Frule%2FArea_Media_NoAuto.ini&emoji=true&list=false&udp=false&tfo=false&expand=true&scv=false&fdn=false&new_name=true"
+            curl -o clash_$urlFile "https://api.v1.mk/sub?target=clash&url=$(urlEncode $urlFile)&insert=false&config=https%3A%2F%2Fraw.githubusercontent.com%2FMeilieage%2Fwebcdn%2Fmain%2Frule%2FArea_Media_NoAuto.ini&emoji=true&list=false&udp=false&tfo=false&expand=true&scv=false&fdn=false&new_name=true"
             rm $urlFile
           done
           
