@@ -46,3 +46,9 @@ moveProxiesToSync() {
     echo $proxy >> "$2"
   done
 }
+
+urlEncode() {
+ text=$(cat $1)
+ result=$(python3 -c "import urllib.request, sys; print(urllib.request.quote(sys.argv[1]))" "$text")
+ echo "$result"| sed "s/\//%2F/g" | sed "s/%0A/%20%20%7C/g" 
+}
